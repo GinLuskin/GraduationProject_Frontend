@@ -18,7 +18,14 @@ const getUsers = async (req, res, next) => {
 };
 
 const signup = async (req, res, next) => {
+  const error = validationResult(req);
   
+  if(!error.isEmpty()) {
+    return  next(new HttpError (
+      'Invalid inputs passed, please check your data', 
+      422
+    ));
+  }
   const { name, email, password } = req.body;
 
   let existingUser
@@ -43,7 +50,7 @@ const signup = async (req, res, next) => {
   const createdUser = new User({
     name,
     email,
-    image: 'https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2022/10/1200/675/Crash-test-dummy-yellow-getty-10-22.jpg?ve=1&tl=1',
+    image: req.file.path,
     password,
     places: []
   });
