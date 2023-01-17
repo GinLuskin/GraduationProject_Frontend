@@ -11,7 +11,7 @@ router.get('/:pid', placesControllers.getPlaceById);
 
 router.get('/user/:uid', placesControllers.getPlacesByUserId);
 
-router.use("protectedRoute", checkAuth, controllers.controller);
+router.use(checkAuth)
 
 router.post(
   '/',
