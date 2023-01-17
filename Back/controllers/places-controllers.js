@@ -50,7 +50,10 @@ const getPlacesByUserId = async (req, res, next) => {
 
   if (!userWithPlaces || userWithPlaces.places.length === 0) {
     return next(
-      new HttpError('Could not find places for the provided user id.', 404)
+      new HttpError(
+        'Could not find places for the provided user id.', 
+        404
+      )
     );
   }
 
@@ -61,7 +64,10 @@ const createPlace = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return next(
-      new HttpError('Invalid inputs passed, please check your data.', 422)
+      new HttpError(
+        'Invalid inputs passed, please check your data.', 
+        422
+      )
     );
   }
 
@@ -95,7 +101,10 @@ const createPlace = async (req, res, next) => {
   }
 
   if (!user) {
-    const error = new HttpError('Could not find user for provided id.', 404);
+    const error = new HttpError(
+      'Could not find user for provided id.', 
+      404
+    );
     return next(error);
   }
 
@@ -123,7 +132,9 @@ const updatePlace = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return next(
-      new HttpError('Invalid inputs passed, please check your data.', 422)
+      new HttpError(
+        'Invalid inputs passed, please check your data.', 
+        422)
     );
   }
 
@@ -137,6 +148,14 @@ const updatePlace = async (req, res, next) => {
     const error = new HttpError(
       'Something went wrong, could not update place.',
       500
+    );
+    return next(error);
+  }
+
+  if(place.creator.toSting() !==  req.userData.userId){
+    const error = new HttpError(
+      'You are not allowed to edit this place.',
+       401
     );
     return next(error);
   }
@@ -173,6 +192,14 @@ const deletePlace = async (req, res, next) => {
 
   if (!place) {
     const error = new HttpError('Could not find place for this id.', 404);
+    return next(error);
+  }
+
+  if(place.creator.id !==  req.userData.userId){
+    const error = new HttpError(
+      'You are not allowed to delete this place.',
+       401
+    );
     return next(error);
   }
 
