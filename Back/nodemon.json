@@ -1,0 +1,9 @@
+{
+    "env": {
+        "DB_USER": "admin",
+        "DB_PASSWORD": "admin2023",
+        "DB_NAME": "project",
+        "GOOGLE_API_KEY": "AIzaSyCx7fGdUsUEBoXGtWgpgWfGmk-rg0FZrq4",
+        "JWT_KEY": "topsecret_dont_share"
+    }
+}

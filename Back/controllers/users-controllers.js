@@ -86,7 +86,7 @@ const signup = async (req, res, next) => {
         userId: createdUser.id, 
         email: createdUser.email 
       }, 
-      'topsecret_dont_share', 
+      process.env.JWT_KEY, 
       {expiresIn: '1h'}
     );
   } catch(err) {
@@ -156,7 +156,7 @@ const login = async (req, res, next) => {
         userId: existingUser.id, 
         email: existingUser.email 
       }, 
-      'topsecret_dont_share', 
+      process.env.JWT_KEY, 
       {expiresIn: '1h'}
     );
   } catch(err) {
