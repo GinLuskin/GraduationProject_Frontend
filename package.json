@@ -1,21 +1,35 @@
 {
-  "name": "graduation-project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "frontend",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-router-dom": "5.3.4",
+    "react-scripts": "3.2.0",
+    "react-transition-group": "^4.4.5"
+  },
   "scripts": {
-    "start": "npm start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GinLuskin/GraduationProject.git"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/GinLuskin/GraduationProject/issues"
-  },
-  "homepage": "https://github.com/GinLuskin/GraduationProject#readme"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
